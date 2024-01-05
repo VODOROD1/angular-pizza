@@ -1,0 +1,7 @@
+<div class="categories">
+    <mat-chip-listbox aria-label="categories" class="list">
+        @for (category of categories; track category) {
+            <mat-chip-option (click)="onChangeCategory(category)" class="list__item">{{category}}</mat-chip-option>
+        }
+    </mat-chip-listbox>
+</div>

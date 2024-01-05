@@ -1,0 +1,42 @@
+@import '../../variables';
+
+.categories {
+  .list {
+    display: flex;
+
+    &__item {
+      list-style-type: none;
+      background-color: #f9f9f9;
+      border-radius: 30px;
+      margin-right: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.1s ease-in-out;
+      // @include noselect();
+
+      &:hover {
+        background-color: darken(#f9f9f9, 2%);
+      }
+
+      &:active {
+        background-color: darken(#f9f9f9, 5%);
+      }
+
+      &.active {
+        background-color: #282828;
+        color: #fff;
+      }
+
+      .mdc-evolution-chip__cell {
+        .mdc-evolution-chip__action {
+          padding: 13px 30px !important;
+        }
+      }
+    }
+  }
+}
+
+.mat-mdc-chip-selected {
+  background-color: #282828 !important;
+  color: #fff !important;
+}
