@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
+import {TuiBooleanHandler} from '@taiga-ui/cdk';
+import { TuiFilterModule } from '@taiga-ui/kit';
 
 type CategoriesProps = {
   value: number;
@@ -11,9 +14,15 @@ const categories = ['Все', 'Мясные', 'Вегетарианская', '�
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [MatChipsModule],
+  imports: [
+    MatChipsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TuiFilterModule
+  ],
   templateUrl: './categories.component.html',
-  styleUrl: './categories.component.scss'
+  styleUrl: './categories.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class CategoriesComponent {
@@ -21,6 +30,12 @@ export class CategoriesComponent {
 
   onChangeCategory(category: string) {
     debugger;
-    
+
   }
+
+  readonly form = new FormGroup({
+    filters: new FormControl(['Food']),
+  });
+
+  disabledItemHandler: TuiBooleanHandler<string> = item => item.length < 7;
 }
