@@ -1,14 +1,1 @@
 /* You can add global styles to this file, and also import other style files */
-.categories {
-    .list__item {
-        .mdc-evolution-chip__cell {
-            .mdc-evolution-chip__action {
-                padding: 13px 30px !important;
-            }
-        }
-    }
-
-    .mat-mdc-standard-chip.mdc-evolution-chip--with-primary-graphic .mdc-evolution-chip__graphic {
-        padding: 0;
-    }
-}

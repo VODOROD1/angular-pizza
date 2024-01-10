@@ -1,6 +1,15 @@
 @import '../../variables';
 
 .categories {
+
+  tui-filter {
+    tui-checkbox-block {
+      &:hover {
+        background-color: darken(#f9f9f9, 2%) !important;
+      }
+    }
+  }
+
   .list {
     display: flex;
 
