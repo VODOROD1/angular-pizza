@@ -1,10 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
+<<<<<<< HEAD
 import {TuiBooleanHandler, tuiPure} from '@taiga-ui/cdk';
 import { TuiAppearance } from '@taiga-ui/core';
 import { TuiFilterModule } from '@taiga-ui/kit';
 import { BehaviorSubject, Observable, map } from 'rxjs';
+=======
+import {TuiBooleanHandler} from '@taiga-ui/cdk';
+import { TuiFilterModule } from '@taiga-ui/kit';
+>>>>>>> 849c4224571ada0f399fd35ae6c38a83dd47d20d
 
 type CategoriesProps = {
   value: number;
