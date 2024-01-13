@@ -4,9 +4,8 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { CategoriesComponent } from './components/categories/categories.component';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { BrowserModule } from "@angular/platform-browser";
 import { SortComponent } from "./components/sort/sort.component";
+import { PizzaBlockComponent, PizzaBlockProps } from "./components/pizza-block/pizza-block.component";
 
 @Component({
   selector: 'app-root',
@@ -19,7 +18,8 @@ import { SortComponent } from "./components/sort/sort.component";
     SortComponent, 
     TuiRootModule, 
     TuiDialogModule, 
-    TuiAlertModule
+    TuiAlertModule,
+    PizzaBlockComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -27,4 +27,14 @@ import { SortComponent } from "./components/sort/sort.component";
 
 export class AppComponent {
   title = 'angular-pizza';
+
+  pizzaProps: PizzaBlockProps = {
+    id: '1',
+    title: 'Мексиканская',
+    price: 210,
+    imageUrl: '',
+    sizes: [26,30,40],
+    types: [0,1],
+    rating: 0
+  }
 }
