@@ -8,7 +8,7 @@
       routerLink="[`/pizza`,props.id]"
       tuiLink
     >
-      <img class="pizza-block__image" src="props.imageUrl" alt="Pizza" />
+      <img class="pizza-block__image" src="{{props.imageUrl}}" alt="Pizza" />
       <h4 class="pizza-block__title">{{ props.title }}</h4>
     </a>
     <div class="pizza-block__selector">
@@ -59,7 +59,7 @@
           />
         </svg>
         <span>Добавить</span>
-        <!-- {addedCount > 0 && <i>{{addedCount}}</i>} -->
+        <i>{{addedCount > 0 ? addedCount : 0}}</i>
       </button>
     </div>
   </div>

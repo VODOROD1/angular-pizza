@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CartItem } from '../../ngrx/cart/types';
 import { TuiLinkModule } from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
+import { PizzaBlockService } from '../../services/pizza-block.service';
 
 const typeNames = ['тонкое', 'традиционное'];
 
@@ -19,6 +20,7 @@ export type PizzaBlockProps = {
   selector: 'app-pizza-block',
   standalone: true,
   imports: [CommonModule, TuiLinkModule],
+  providers: [PizzaBlockService],
   templateUrl: './pizza-block.component.html',
   styleUrl: './pizza-block.component.scss'
 })
@@ -37,8 +39,8 @@ export class PizzaBlockComponent {
     // const [activeType, setActiveType] = React.useState(0);
     // const [activeSize, setActiveSize] = React.useState(0);
 
-    constructor() {
-      
+    constructor(public pizzaBlockService: PizzaBlockService) {
+      this.addedCount = this.pizzaBlockService.addedCount;
     }
 
     @Input() props: PizzaBlockProps;
@@ -53,6 +55,7 @@ export class PizzaBlockComponent {
     }
 
     onClickAdd = () => {
+      debugger
       const item: CartItem = {
         id: this.props.id,
         title: this.props.title,
@@ -62,7 +65,8 @@ export class PizzaBlockComponent {
         size: this.props.sizes[this.activeSize],
         count: 0,
       };
-
+      debugger
+      this.pizzaBlockService.addItem(item);
       // изменяем текущее состояние
       // dispatch(addItem(item));
     };

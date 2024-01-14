@@ -23,6 +23,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              "src/assets/img",
               {
                 "glob": "**/*",
                 "input": "node_modules/@taiga-ui/icons/src",
@@ -89,7 +90,8 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/img"
             ],
             "styles": [
               "src/styles.css"

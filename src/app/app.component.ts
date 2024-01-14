@@ -32,7 +32,7 @@ export class AppComponent {
     id: '1',
     title: 'Мексиканская',
     price: 210,
-    imageUrl: '',
+    imageUrl: 'assets/img/pizza-logo.svg',
     sizes: [26,30,40],
     types: [0,1],
     rating: 0
