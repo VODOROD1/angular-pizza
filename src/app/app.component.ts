@@ -6,18 +6,19 @@ import { HeaderComponent } from './components/header/header.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { SortComponent } from "./components/sort/sort.component";
 import { PizzaBlockComponent, PizzaBlockProps } from "./components/pizza-block/pizza-block.component";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule, 
-    RouterOutlet, 
-    HeaderComponent, 
-    CategoriesComponent, 
-    SortComponent, 
-    TuiRootModule, 
-    TuiDialogModule, 
+    CommonModule,
+    RouterOutlet,
+    HeaderComponent,
+    CategoriesComponent,
+    SortComponent,
+    TuiRootModule,
+    TuiDialogModule,
     TuiAlertModule,
     PizzaBlockComponent
   ],
