@@ -56,6 +56,16 @@
         }
       }
     }
+
+    &_types-buttons-group {
+      display: flex;
+      justify-content:space-around;
+    }
+
+    &_sizes-buttons-group {
+      display: flex;
+      justify-content:space-around;
+    }
   }
 
   &__bottom {

@@ -8,6 +8,8 @@ import { Store, select } from '@ngrx/store';
 import { CountState } from '../../ngrx/reducers/count.reducer';
 import { selectCount, selectUpdatedAt } from '../../ngrx/reducers/count.selectors';
 import { CountClearAction, CountDecreaseAction, CountIncreaseAction } from '../../ngrx/reducers/count.actions';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TuiRadioBlockModule } from '@taiga-ui/kit';
 
 const typeNames = ['тонкое', 'традиционное'];
 
@@ -25,7 +27,7 @@ export type PizzaBlockProps = {
 @Component({
   selector: 'app-pizza-block',
   standalone: true,
-  imports: [CommonModule, TuiLinkModule],
+  imports: [ CommonModule, TuiLinkModule, ReactiveFormsModule, TuiRadioBlockModule ],
   providers: [PizzaBlockService],
   templateUrl: './pizza-block.component.html',
   styleUrl: './pizza-block.component.scss'
@@ -60,7 +62,19 @@ export class PizzaBlockComponent {
     addedCount: number = 0;
     public typeNames: string[] = typeNames;
 
+    public typeForm: FormGroup = new FormGroup({
+      typeValue: new FormControl(this.activeType)
+    });
+
+    public sizeForm: FormGroup = new FormGroup({
+      sizeValue: new FormControl(this.activeSize)
+    });
+
     setActiveType(typeId: any) {
+
+    }
+
+    setActiveSize(size: any) {
 
     }
 

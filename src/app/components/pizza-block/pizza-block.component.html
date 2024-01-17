@@ -12,7 +12,41 @@
       <h4 class="pizza-block__title">{{ props.title }}</h4>
     </a>
     <div class="pizza-block__selector">
-      <ul>
+
+      <form
+        class="group"
+        [formGroup]="typeForm"
+      >
+      <!-- [collapsed]="true" -->
+        <div
+          tuiGroup
+          class="pizza-block__selector_types-buttons-group"
+        >
+          @for (typeId of props.types; track typeId) {
+            <tui-radio-block
+              contentAlign="right"
+              formControlName="typeValue"
+              size="m"
+              [hideRadio]="true"
+              [item]="typeId"
+            >
+              {{ typeNames[typeId] }}
+            </tui-radio-block>
+          }
+          <!-- <tui-radio-block
+            *ngFor="let typeId of props.types"
+            contentAlign="right"
+            formControlName="typeValue"
+            size="l"
+            [hideRadio]="true"
+            [item]="typeId"
+          >
+            {{ typeNames[typeId] }}
+          </tui-radio-block> -->
+        </div>
+      </form>
+
+      <!-- <ul> -->
         <!-- {types.map((typeId) => (
           <li
             key={typeId}
@@ -21,7 +55,7 @@
             {typeNames[typeId]}
           </li>
         ))} -->
-        @for (typeId of props.types; track typeId) {
+        <!-- @for (typeId of props.types; track typeId) {
           <li
             key='typeId'
             onClick='setActiveType(typeId)'
@@ -32,8 +66,38 @@
             {{ typeNames[typeId] }}
           </li>
         }
-      </ul>
-      <ul>
+      </ul> -->
+      <form
+        class="group"
+        [formGroup]="sizeForm"
+      >
+        <div
+          tuiGroup
+          class="pizza-block__selector_sizes-buttons-group"
+        >
+          @for (size of props.sizes; track size) {
+            <tui-radio-block
+              contentAlign="right"
+              formControlName="sizeValue"
+              size="m"
+              [hideRadio]="true"
+              [item]="size"
+            >
+              {{ size }}
+            </tui-radio-block>
+          }
+      <!-- <ul>
+        @for (size of props.sizes; track size) {
+          <li
+            key='size'
+            onClick='setActiveSize(typeId)'
+            [ngClass]="{
+              'active': activeSize === size
+            }"
+          >
+            {{ size }}
+          </li>
+        } -->
         <!-- {sizes.map((size, i) => (
           <li
             key={size}
@@ -42,8 +106,9 @@
             {size} см.
           </li>
         ))} -->
-      </ul>
-    </div>
+      <!-- </ul> -->
+      </div>
+    </form>
     <div class="pizza-block__bottom">
       <div class="pizza-block__price">от {{ props.price }} ₽</div>
       <button (click)="onClickAdd()" class="button button--outline button--add">
