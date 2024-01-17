@@ -1,10 +1,10 @@
 export type CartItem = {
-    id: string;
+    id: number;
     title: string;
     price: number;
     imageUrl: string;
-    type: string;
-    size: number;
+    types: number[];
+    sizes: number[];
     count: number;
   };
   

@@ -3,16 +3,22 @@ import { CartItem } from '../../ngrx/cart/types';
 import { TuiLinkModule } from '@taiga-ui/core';
 import { CommonModule } from '@angular/common';
 import { PizzaBlockService } from '../../services/pizza-block.service';
+import { Observable, map } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { CountState } from '../../ngrx/reducers/count.reducer';
+import { selectCount, selectUpdatedAt } from '../../ngrx/reducers/count.selectors';
+import { CountClearAction, CountDecreaseAction, CountIncreaseAction } from '../../ngrx/reducers/count.actions';
 
 const typeNames = ['тонкое', 'традиционное'];
 
 export type PizzaBlockProps = {
-  id: string;
-  title: string;
-  price: number;
+  id: number;
   imageUrl: string;
-  sizes: number[];
+  title: string;
   types: number[];
+  sizes: number[];
+  price: number;
+  category: number;
   rating: number;
 };
 
@@ -38,8 +44,12 @@ export class PizzaBlockComponent {
     // const cartItem = useSelector(selectCartItemById(id));
     // const [activeType, setActiveType] = React.useState(0);
     // const [activeSize, setActiveSize] = React.useState(0);
+    public count$: Observable<number> = this.store$.pipe(select(selectCount));
+    public disableDecrease$: Observable<boolean> = this.count$.pipe(map((count) => count <= 0));
+    public updatedAt$: Observable<number> = this.store$.pipe(select(selectUpdatedAt));
 
-    constructor(public pizzaBlockService: PizzaBlockService) {
+    constructor(public pizzaBlockService: PizzaBlockService,
+      private store$: Store<CountState>) {
       this.addedCount = this.pizzaBlockService.addedCount;
     }
 
@@ -61,13 +71,26 @@ export class PizzaBlockComponent {
         title: this.props.title,
         price: this.props.price,
         imageUrl: this.props.imageUrl,
-        type: typeNames[this.activeType],
-        size: this.props.sizes[this.activeSize],
+        types: this.props.types,
+        sizes: this.props.sizes,
         count: 0,
       };
       debugger
       this.pizzaBlockService.addItem(item);
+      this.increase();
       // изменяем текущее состояние
       // dispatch(addItem(item));
     };
+
+    increase() {
+      this.store$.dispatch(new CountIncreaseAction());
+    }
+
+    decrease() {
+      this.store$.dispatch(new CountDecreaseAction());
+    }
+
+    clear() {
+      this.store$.dispatch(new CountClearAction());
+    }
 }

@@ -6,7 +6,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { SortComponent } from "./components/sort/sort.component";
 import { PizzaBlockComponent, PizzaBlockProps } from "./components/pizza-block/pizza-block.component";
-import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import pizzasJson from "../assets/pizzas.json";
 
 @Component({
   selector: 'app-root',
@@ -29,13 +29,15 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 export class AppComponent {
   title = 'angular-pizza';
 
-  pizzaProps: PizzaBlockProps = {
-    id: '1',
-    title: 'Мексиканская',
-    price: 210,
-    imageUrl: 'assets/img/pizza-logo.svg',
-    sizes: [26,30,40],
-    types: [0,1],
-    rating: 0
-  }
+  // pizzaProps: PizzaBlockProps = {
+  //   id: '1',
+  //   title: 'Мексиканская',
+  //   price: 210,
+  //   imageUrl: 'assets/img/pizza-logo.svg',
+  //   sizes: [26,30,40],
+  //   types: [0,1],
+  //   rating: 0
+  // }
+
+  pizzas: PizzaBlockProps[] = pizzasJson;
 }

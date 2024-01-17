@@ -60,7 +60,8 @@ export class CategoriesComponent {
     }
  
     onModelChange(model: readonly string[]): void {
-        this.filters$.next(model);
+      // debugger
+      this.filters$.next(model);
     }
  
     toggleAll(): void {

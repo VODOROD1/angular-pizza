@@ -59,7 +59,7 @@
           />
         </svg>
         <span>Добавить</span>
-        <i>{{addedCount > 0 ? addedCount : 0}}</i>
+        <i>{{ count$ | async }}</i>
       </button>
     </div>
   </div>
