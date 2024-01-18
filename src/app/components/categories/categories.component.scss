@@ -45,6 +45,13 @@
       }
     }
   }
+
+  tui-filter {
+    tui-checkbox-block,._active {
+      background-color: #282828;
+      color: #fff;
+    }
+  }
 }
 
 .mat-mdc-chip-selected {

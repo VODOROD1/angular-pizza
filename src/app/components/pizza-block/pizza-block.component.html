@@ -17,7 +17,6 @@
         class="group"
         [formGroup]="typeForm"
       >
-      <!-- [collapsed]="true" -->
         <div
           tuiGroup
           class="pizza-block__selector_types-buttons-group"
@@ -29,44 +28,14 @@
               size="m"
               [hideRadio]="true"
               [item]="typeId"
+              (click)="setActiveType(typeId)"
             >
               {{ typeNames[typeId] }}
             </tui-radio-block>
           }
-          <!-- <tui-radio-block
-            *ngFor="let typeId of props.types"
-            contentAlign="right"
-            formControlName="typeValue"
-            size="l"
-            [hideRadio]="true"
-            [item]="typeId"
-          >
-            {{ typeNames[typeId] }}
-          </tui-radio-block> -->
         </div>
+        <div>{{ activeType }}</div>
       </form>
-
-      <!-- <ul> -->
-        <!-- {types.map((typeId) => (
-          <li
-            key={typeId}
-            onClick={() => setActiveType(typeId)}
-            className={activeType === typeId ? 'active' : ''}>
-            {typeNames[typeId]}
-          </li>
-        ))} -->
-        <!-- @for (typeId of props.types; track typeId) {
-          <li
-            key='typeId'
-            onClick='setActiveType(typeId)'
-            [ngClass]="{
-              'active': activeType === typeId
-            }"
-          >
-            {{ typeNames[typeId] }}
-          </li>
-        }
-      </ul> -->
       <form
         class="group"
         [formGroup]="sizeForm"
@@ -82,32 +51,13 @@
               size="m"
               [hideRadio]="true"
               [item]="size"
+              (click)="setActiveSize(size)"
             >
-              {{ size }}
+              {{ size }} см.
             </tui-radio-block>
           }
-      <!-- <ul>
-        @for (size of props.sizes; track size) {
-          <li
-            key='size'
-            onClick='setActiveSize(typeId)'
-            [ngClass]="{
-              'active': activeSize === size
-            }"
-          >
-            {{ size }}
-          </li>
-        } -->
-        <!-- {sizes.map((size, i) => (
-          <li
-            key={size}
-            onClick={() => setActiveSize(i)}
-            className={activeSize === i ? 'active' : ''}>
-            {size} см.
-          </li>
-        ))} -->
-      <!-- </ul> -->
-      </div>
+        </div>
+        <div>{{ activeSize }}</div>
     </form>
     <div class="pizza-block__bottom">
       <div class="pizza-block__price">от {{ props.price }} ₽</div>

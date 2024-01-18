@@ -1,3 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import './_normalize.scss';
 @import './_button.scss';
+
+.categories tui-filter tui-checkbox-block,._active label {
+    background-color: #282828 !important;
+    color: #fff !important;
+}
+
+.categories .all-button, .active .t-wrapper {
+    background-color: #282828 !important;
+}
+
+.categories .all-button, .active .t-wrapper span {
+    color: #fff !important;
+}

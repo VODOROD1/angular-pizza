@@ -3,7 +3,10 @@
         size="m"
         tuiButton
         type="button"
-        class="item tui-space_right-1"
+        class="item tui-space_right-1 all-button"
+        [ngClass]="{
+            'active': true
+        }"
         [appearance]="buttonAppearance$ | async"
         (click)="toggleAll()"
     >

@@ -50,14 +50,24 @@ export class PizzaBlockComponent {
     public disableDecrease$: Observable<boolean> = this.count$.pipe(map((count) => count <= 0));
     public updatedAt$: Observable<number> = this.store$.pipe(select(selectUpdatedAt));
 
-    constructor(public pizzaBlockService: PizzaBlockService,
-      private store$: Store<CountState>) {
+    constructor(
+      public pizzaBlockService: PizzaBlockService,
+      private store$: Store<CountState>
+    ) {
       this.addedCount = this.pizzaBlockService.addedCount;
+      this.pizzaBlockService.getActiveTypeSub()
+        .subscribe(result => {
+          this.activeType = result;
+        })
+      this.pizzaBlockService.getActiveSizeSub()
+        .subscribe(result => {
+          this.activeSize = result;
+        })
     }
 
     @Input() props: PizzaBlockProps;
-    activeSize: number = 0;
     activeType: number = 0;
+    activeSize: number = 26;
     // const addedCount = cartItem ? cartItem.count : 0;
     addedCount: number = 0;
     public typeNames: string[] = typeNames;
@@ -70,12 +80,14 @@ export class PizzaBlockComponent {
       sizeValue: new FormControl(this.activeSize)
     });
 
-    setActiveType(typeId: any) {
-
+    setActiveType(typeId: number) {
+      debugger
+      this.pizzaBlockService.activeType = typeId;
     }
 
-    setActiveSize(size: any) {
-
+    setActiveSize(size: number) {
+      debugger
+      this.pizzaBlockService.activeSize = size;
     }
 
     onClickAdd = () => {
