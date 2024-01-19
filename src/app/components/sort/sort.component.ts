@@ -57,11 +57,16 @@ export class SortComponent {
   //     ['Ascending', 'Descending'],
   // ];
 
+  // readonly items = [
+  //   'By interest', 'By genre', 'By release year', 'By subject'
+  // ];
+
   readonly items = [
-    'By interest', 'By genre', 'By release year', 'By subject'
+    'популярности', 'по цене', 'по алфавиту'
   ];
 
-  primary = 'By genre';
+
+  primary = 'популярности';
 
   ascending = true;
 

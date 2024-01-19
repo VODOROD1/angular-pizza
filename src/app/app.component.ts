@@ -1,5 +1,5 @@
 import { TuiRootModule, TuiDialogModule, TuiAlertModule } from "@taiga-ui/core";
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
@@ -7,6 +7,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { SortComponent } from "./components/sort/sort.component";
 import { PizzaBlockComponent, PizzaBlockProps } from "./components/pizza-block/pizza-block.component";
 import pizzasJson from "../assets/pizzas.json";
+import { HttpClientModule } from "@angular/common/http";
+import { MockapiService } from "./services/mockapi.service";
 
 @Component({
   selector: 'app-root',
@@ -20,24 +22,26 @@ import pizzasJson from "../assets/pizzas.json";
     TuiRootModule,
     TuiDialogModule,
     TuiAlertModule,
-    PizzaBlockComponent
+    PizzaBlockComponent,
+    HttpClientModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  constructor(private mockapiService: MockapiService) {
+  }
   title = 'angular-pizza';
 
-  // pizzaProps: PizzaBlockProps = {
-  //   id: '1',
-  //   title: 'Мексиканская',
-  //   price: 210,
-  //   imageUrl: 'assets/img/pizza-logo.svg',
-  //   sizes: [26,30,40],
-  //   types: [0,1],
-  //   rating: 0
-  // }
+  pizzas: PizzaBlockProps[] = [];
 
-  pizzas: PizzaBlockProps[] = pizzasJson;
+  ngOnInit(): void {
+      this.mockapiService.getPizzasJson()
+      .subscribe(result => {
+        debugger;
+        this.pizzas = result;
+      })
+  }
 }

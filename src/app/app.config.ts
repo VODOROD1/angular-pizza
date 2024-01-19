@@ -10,6 +10,7 @@ import { StoreRouterConnectingModule, provideRouterStore } from '@ngrx/router-st
 import { metaReducers, reducers } from "./ngrx/reducers";
 import { environment } from "../environment/environment";
 import { AppEffects } from "./app.effects";
+import { provideHttpClient } from "@angular/common/http";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -41,6 +42,7 @@ export const appConfig: ApplicationConfig = {
     ),
     importProvidersFrom(
       StoreRouterConnectingModule.forRoot()
-    )
+    ),
+    provideHttpClient()
   ]
 };

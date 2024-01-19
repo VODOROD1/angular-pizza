@@ -47,13 +47,13 @@ export class PizzaBlockService {
   }
 
   set addedCount(num: number) {
-    debugger
+    // debugger
     this.#addedCount = num;
     debugger
   }
 
   get addedCount(): number {
-    debugger
+    // debugger
     return this.#addedCount;
   }
 

@@ -33,6 +33,7 @@ const categories = ['Мясные', 'Вегетарианская', 'Гриль'
 export class CategoriesComponent {
   // public categories: string[] = categories;
   readonly categories: string[] = categories;
+  public isAllButton: boolean = false;
 
   onChangeCategory(category: string) {
     debugger;
@@ -60,8 +61,9 @@ export class CategoriesComponent {
     }
  
     onModelChange(model: readonly string[]): void {
-      // debugger
+      debugger
       this.filters$.next(model);
+      this.isAllButton = false;
     }
  
     toggleAll(): void {
@@ -69,6 +71,7 @@ export class CategoriesComponent {
       this.filters$.next(
           this.categories.length === this.filters$.value.length ? [] : [...this.categories],
       );
+      this.isAllButton = !this.isAllButton;
     }
 
   // readonly form = new FormGroup({

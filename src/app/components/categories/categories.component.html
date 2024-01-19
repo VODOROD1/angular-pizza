@@ -5,14 +5,14 @@
         type="button"
         class="item tui-space_right-1 all-button"
         [ngClass]="{
-            'active': true
+            'active': isAllButton
         }"
         [appearance]="buttonAppearance$ | async"
         (click)="toggleAll()"
     >
         Все
     </button>
-    
+
     <tui-filter
         class="item"
         [items]="categories"
