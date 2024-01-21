@@ -1,0 +1,69 @@
+<div class="skeleton">
+    <div class="tui-col_md-15 tui-col_stretch">
+        <tui-island
+            size="l"
+            textAlign="center"
+            class="island"
+            [transparent]="true"
+        >
+            <div class="tui-island__content">
+                <figure class="tui-island__figure">
+                    <div
+                        class="some-figure"
+                        [class.tui-skeleton_light]="lightMode"
+                        [class.tui-skeleton_rounded]="skeletonVisible"
+                        [class.tui-skeleton]="skeletonVisible"
+                    ></div>
+                </figure>
+                <div class="island-content">
+                    <div class="skeleton_string_wrapper skeleton_string_wrapper_top">
+                        <tui-checkbox-labeled
+                            formControlName="osnoValue"
+                            size="l"
+                            class="skeleton_string tui-form__checkbox"
+                            [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton]="skeletonVisible"
+                        >
+                            First option
+                        </tui-checkbox-labeled>
+                    </div>
+                    <div class="skeleton_string_wrapper skeleton_string_wrapper_middle">
+                        <tui-input
+                            class="tui_input"
+                            formControlName="nameValue"
+                            tuiHintContent="With a hint"
+                            [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton]="skeletonVisible"
+                        >
+                            Some input
+                            <input
+                                placeholder="Name Surname"
+                                tuiTextfield
+                            />
+                        </tui-input>
+                    </div>
+                    <div class="skeleton_string_wrapper skeleton_string_wrapper_bottom">
+                        <tui-checkbox-labeled
+                            formControlName="osnoValue"
+                            size="l"
+                            class="skeleton_string tui-form__checkbox"
+                            [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton]="skeletonVisible"
+                        >
+                            First option
+                        </tui-checkbox-labeled>
+                        <tui-checkbox-labeled
+                            formControlName="usnValue"
+                            size="l"
+                            class="skeleton_string tui-form__checkbox"
+                            [class.tui-skeleton_light]="lightMode"
+                            [class.tui-skeleton]="skeletonVisible"
+                        >
+                            Cool option
+                        </tui-checkbox-labeled>
+                    </div>
+                </div>
+            </div>
+        </tui-island>
+    </div>
+</div>

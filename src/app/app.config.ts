@@ -1,7 +1,7 @@
 import { provideAnimations } from "@angular/platform-browser/animations";
 import { TuiRootModule } from "@taiga-ui/core";
 import { ApplicationConfig, importProvidersFrom, isDevMode } from '@angular/core';
-import { RouterModule, provideRouter } from '@angular/router';
+import { RouterModule, Routes, provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { StoreModule, provideStore } from '@ngrx/store';
 import { StoreDevtoolsModule, provideStoreDevtools } from '@ngrx/store-devtools';
@@ -11,6 +11,15 @@ import { metaReducers, reducers } from "./ngrx/reducers";
 import { environment } from "../environment/environment";
 import { AppEffects } from "./app.effects";
 import { provideHttpClient } from "@angular/common/http";
+import { HomeComponent } from "./components/home/home.component";
+import { CartComponent } from "./components/cart/cart.component";
+
+// определение маршрутов
+const appRoutes: Routes = [
+  { path: "", component: HomeComponent},
+  { path: "cart", component: CartComponent},
+  { path: "**", component:  HomeComponent}
+];
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -43,6 +52,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       StoreRouterConnectingModule.forRoot()
     ),
-    provideHttpClient()
+    provideHttpClient(),
+    provideRouter(appRoutes)
   ]
 };

@@ -3,12 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
-import { CategoriesComponent } from './components/categories/categories.component';
-import { SortComponent } from "./components/sort/sort.component";
-import { PizzaBlockComponent, PizzaBlockProps } from "./components/pizza-block/pizza-block.component";
-import pizzasJson from "../assets/pizzas.json";
 import { HttpClientModule } from "@angular/common/http";
 import { MockapiService } from "./services/mockapi.service";
+import { HomeComponent } from "./components/home/home.component";
 
 @Component({
   selector: 'app-root',
@@ -17,13 +14,11 @@ import { MockapiService } from "./services/mockapi.service";
     CommonModule,
     RouterOutlet,
     HeaderComponent,
-    CategoriesComponent,
-    SortComponent,
     TuiRootModule,
     TuiDialogModule,
     TuiAlertModule,
-    PizzaBlockComponent,
-    HttpClientModule
+    HttpClientModule,
+    HomeComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -31,17 +26,10 @@ import { MockapiService } from "./services/mockapi.service";
 
 export class AppComponent implements OnInit {
 
-  constructor(private mockapiService: MockapiService) {
+  constructor() {
   }
-  title = 'angular-pizza';
-
-  pizzas: PizzaBlockProps[] = [];
 
   ngOnInit(): void {
-      this.mockapiService.getPizzasJson()
-      .subscribe(result => {
-        debugger;
-        this.pizzas = result;
-      })
+
   }
 }
