@@ -13,12 +13,13 @@ import { AppEffects } from "./app.effects";
 import { provideHttpClient } from "@angular/common/http";
 import { HomeComponent } from "./components/home/home.component";
 import { CartComponent } from "./components/cart/cart.component";
+import { NotFoundComponent } from "./components/not-found/not-found.component";
 
 // определение маршрутов
 const appRoutes: Routes = [
   { path: "", component: HomeComponent},
   { path: "cart", component: CartComponent},
-  { path: "**", component:  HomeComponent}
+  { path: "**", component:  NotFoundComponent}
 ];
 
 export const appConfig: ApplicationConfig = {

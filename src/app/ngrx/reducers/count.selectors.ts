@@ -1,14 +1,15 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { countNode, CountState } from './count.reducer';
+import { countNode } from './count.reducer';
+import { IState } from '../interfaces';
 
-export const selectCountFeature = createFeatureSelector<CountState>(countNode);
+export const selectCountFeature = createFeatureSelector<IState>(countNode);
 
 export const selectCount = createSelector(
   selectCountFeature,
-  (state: CountState): number => state.count
+  (state: IState): number => state.countState.count
 );
 
 export const selectUpdatedAt = createSelector(
   selectCountFeature,
-  (state: CountState): number => state.updatedAt
+  (state: IState): number => state.countState.updatedAt
 );
