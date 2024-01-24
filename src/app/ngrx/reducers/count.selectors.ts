@@ -7,7 +7,6 @@ export const selectCountFeature = createFeatureSelector<IState>(countNode);
 export const selectCount = createSelector(
   selectCountFeature,
   (state: IState): number => {
-    debugger;
     return state.countState.count
   }
 );

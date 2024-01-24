@@ -1,18 +1,18 @@
-<div className="cart__item">
-    <div className="cart__item-img">
-      <img className="pizza-block__image" src='imageUrl' alt="Pizza" />
+<div class="cart__item">
+    <div class="cart__item-img">
+      <img class="pizza-block__image" src="{{props.imageUrl}}" alt="Pizza" />
     </div>
-    <div className="cart__item-info">
-      <h3>{{data.title}}</h3>
+    <div class="cart__item-info">
+      <h3>{{props.title}}</h3>
       <p>
-        {{data.type}}, {{data.size}} см.
+        {{props.type}}, {{props.size}} см.
       </p>
     </div>
-    <div className="cart__item-count">
+    <div class="cart__item-count">
       <button
         disabled='count === 1'
         onClick='onClickMinus()'
-        className="button button--outline button--circle cart__item-count-minus">
+        class="button button--outline button--circle cart__item-count-minus">
         <svg
           width="10"
           height="10"
@@ -27,10 +27,10 @@
             fill="#EB5A1E"></path>
         </svg>
       </button>
-      <b>{{data.count}}</b>
+      <b>{{props.count}}</b>
       <button
         onClick='onClickPlus()'
-        className="button button--outline button--circle cart__item-count-plus">
+        class="button button--outline button--circle cart__item-count-plus">
         <svg
           width="10"
           height="10"
@@ -46,11 +46,11 @@
         </svg>
       </button>
     </div>
-    <div className="cart__item-price">
-      <b>{{data.price * data.count}} ₽</b>
+    <div class="cart__item-price">
+      <b>{{props.price * props.count}} ₽</b>
     </div>
-    <div className="cart__item-remove">
-      <div onClick='onClickRemove()' className="button button--outline button--circle">
+    <div class="cart__item-remove">
+      <div onClick='onClickRemove()' class="button button--outline button--circle">
         <svg
           width="10"
           height="10"

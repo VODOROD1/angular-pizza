@@ -10,69 +10,11 @@
                                     supported by Chrome, Opera and Firefox */
 }
 
+.temp {
+  text-decoration: overline;
+}
+
 .cart {
-    &__top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  
-    .content__title {
-      display: flex;
-      align-items: center;
-      font-size: 32px;
-  
-      svg {
-        position: relative;
-        top: -2px;
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-        path {
-          stroke: $black;
-          stroke-width: 1.9;
-        }
-      }
-    }
-  
-    &__clear {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      @include noselect();
-  
-      span {
-        display: inline-block;
-        margin-left: 7px;
-        color: #b6b6b6;
-        font-size: 18px;
-      }
-  
-      span,
-      svg,
-      path {
-        transition: all $duration ease-in-out;
-      }
-  
-      &:hover {
-        svg {
-          path {
-            stroke: darken($color: #b6b6b6, $amount: 50);
-          }
-        }
-        span {
-          color: darken($color: #b6b6b6, $amount: 50);
-        }
-      }
-    }
-  
-    .content__items {
-      display: block;
-      // grid-template-columns: repeat(4, 1fr);
-      // grid-template-rows: repeat(1, 1fr);
-      // grid-column-gap: 11px;
-    }
-  
     &__item {
       display: flex;
       width: 100%;
