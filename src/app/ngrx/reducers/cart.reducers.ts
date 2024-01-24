@@ -2,7 +2,7 @@ import { calcTotalPrice } from "../../utils/calcTotalPrice";
 import { initialStateCommon } from "../initial-state";
 import { IState } from "../interfaces";
 import { CartActions, cartActionsType } from "./cart.actions";
-export const cartNode = 'cart';
+export const cartNode = 'cartState';
 
 const initialState: IState = initialStateCommon;
 
@@ -16,8 +16,8 @@ export const cartReducer = (state = initialState, action: CartActions) => {
             newState.cartState.items[indexFindedItem].count++;
         } else {
             newState.cartState.items.push({
-            ...action.payload,
-            count: 1,
+                ...action.payload,
+                count: 1,
             });
         }
 

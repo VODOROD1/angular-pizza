@@ -5,11 +5,11 @@ import { CommonModule } from '@angular/common';
 import { PizzaBlockService } from '../../services/pizza-block.service';
 import { Observable, map } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { CountState } from '../../ngrx/reducers/count.reducer';
 import { selectCount, selectUpdatedAt } from '../../ngrx/reducers/count.selectors';
 import { CountClearAction, CountDecreaseAction, CountIncreaseAction } from '../../ngrx/reducers/count.actions';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TuiRadioBlockModule } from '@taiga-ui/kit';
+import { CountState } from '../../ngrx/interfaces';
 
 const typeNames = ['тонкое', 'традиционное'];
 
@@ -34,18 +34,6 @@ export type PizzaBlockProps = {
 })
 
 export class PizzaBlockComponent {
-  // export const PizzaBlock: React.FC<PizzaBlockProps> = ({
-  //   id,
-  //   title,
-  //   price,
-  //   imageUrl,
-  //   sizes,
-  //   types,
-  // }) => {
-    // const dispatch = useDispatch();
-    // const cartItem = useSelector(selectCartItemById(id));
-    // const [activeType, setActiveType] = React.useState(0);
-    // const [activeSize, setActiveSize] = React.useState(0);
     public count$: Observable<number> = this.store$.pipe(select(selectCount));
     public disableDecrease$: Observable<boolean> = this.count$.pipe(map((count) => count <= 0));
     public updatedAt$: Observable<number> = this.store$.pipe(select(selectUpdatedAt));
@@ -54,6 +42,12 @@ export class PizzaBlockComponent {
       public pizzaBlockService: PizzaBlockService,
       private store$: Store<CountState>
     ) {
+      /////////////
+      this.count$.subscribe(res => {
+        let temp = typeof this.count$;
+        debugger
+      })
+      /////////////
       this.addedCount = this.pizzaBlockService.addedCount;
       this.pizzaBlockService.getActiveTypeSub()
         .subscribe(result => {
@@ -68,7 +62,6 @@ export class PizzaBlockComponent {
     @Input() props: PizzaBlockProps;
     activeType: number = 0;
     activeSize: number = 26;
-    // const addedCount = cartItem ? cartItem.count : 0;
     addedCount: number = 0;
     public typeNames: string[] = typeNames;
 
@@ -104,11 +97,10 @@ export class PizzaBlockComponent {
       debugger
       this.pizzaBlockService.addItem(item);
       this.increase();
-      // изменяем текущее состояние
-      // dispatch(addItem(item));
     };
 
     increase() {
+      // изменяем текущее состояние
       this.store$.dispatch(new CountIncreaseAction());
     }
 

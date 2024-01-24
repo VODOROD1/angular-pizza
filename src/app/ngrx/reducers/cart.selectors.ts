@@ -6,5 +6,10 @@ export const selectCartFeature = createFeatureSelector<IState>(cartNode);
 
 export const selectCart = createSelector(
     selectCartFeature,
-    (state: IState): CartState => state.cartState
+    (state: IState): CartState => {
+        debugger
+        let cartState = state.cartState;
+        debugger
+        return cartState;
+    }
 );

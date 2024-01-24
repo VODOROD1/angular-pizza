@@ -44,8 +44,7 @@ export class CartUpdatedAtAction implements Action {
   }
 }
 
-export type CartActions = 
-    CartAddIncreaseItemAction
+export type CartActions = CartAddIncreaseItemAction
   | CartDecreaseItemAction
   | CartRemoveItemAction
   | CartClearItemsAction

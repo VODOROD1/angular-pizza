@@ -1,44 +1,56 @@
-import { Component } from '@angular/core';
-import { selectCart } from '../../ngrx/cart/selectors';
+import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { CartEmptyComponent } from './cart-empty/cart-empty.component';
 import { Observable } from 'rxjs';
-import { CartState, CountState } from '../../ngrx/interfaces';
+import { CartState, IState } from '../../ngrx/interfaces';
 import { CartItemComponent } from './cart-item/cart-item.component';
+import { selectCart } from '../../ngrx/reducers/cart.selectors';
+import { CartClearItemsAction } from '../../ngrx/reducers/cart.actions';
+import { CartItem } from '../../ngrx/cart/types';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CartEmptyComponent,CartItemComponent],
+  imports: [CartEmptyComponent,CartItemComponent,RouterModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
-export class CartComponent {
-  constructor(private store$: Store<CountState>) {
-    this.cartState$
-    .subscribe(cartState => {
-      this.totalCount = cartState.items.reduce((sum: number, item: any) => sum + item.count, 0);
-      this.totalPrice = cartState.totalPrice;
-    })
+
+export class CartComponent implements OnInit {
+  constructor(private store$: Store<IState>) {
   }
 
-  totalPrice: number = 0;
-  totalCount: number = 0;
-  // const dispatch = useDispatch();
-  public cartState$: Observable<CartState> = this.store$.pipe(select(selectCart))
+  localState: {
+    totalPrice: number,
+    totalCount: number,
+    items: CartItem[]
+  } = {
+    totalPrice: 0,
+    totalCount: 0,
+    items: []
+  }
+  
+  public cartState$: Observable<CartState> = this.store$.pipe(select(selectCart));
+  // public count$: Observable<number> = this.store$.pipe(select(selectCount));
+
+  ngOnInit(): void {
+    if(this.cartState$) {
+      this.cartState$.subscribe(cartState => {
+        debugger
+        this.localState.totalCount = cartState.items.reduce((sum: number, item: any) => sum + item.count, 0);
+        this.localState.totalPrice = cartState.totalPrice;
+        this.localState.items.length = 0;
+        this.localState.items.push(...cartState.items);
+        debugger;
+        // this.items = cartState.items;
+      })
+    }
+  }
 
   onClickClear = () => {
     if (window.confirm('Очистить корзину?')) {
-      let clearAction = {type: 'CLEAR_ITEMS'}
-      this.store$.dispatch(clearAction);
+      this.store$.dispatch(new CartClearItemsAction());
     }
   };
-
-  // @ts-ignore
-  // if (this.cartState.totalPrice) {
-
-  // }
-  // if (!this.cartState.totalPrice) {
-  //   return <CartEmpty />;
-  // }
 }
