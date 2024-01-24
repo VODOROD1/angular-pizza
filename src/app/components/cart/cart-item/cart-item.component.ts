@@ -25,12 +25,14 @@ export class CartItemComponent implements OnInit {
   @Input() props: CartItem;
 
   onClickPlus()  {
+    debugger
     this.store$.dispatch(new CartAddIncreaseItemAction({
       ...this.props
     } as CartItem));
   };
 
   onClickMinus() {
+    debugger
     this.store$.dispatch(new CartDecreaseItemAction({
       id: this.props.id
     }));

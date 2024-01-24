@@ -100,6 +100,7 @@ export class PizzaBlockComponent {
     };
 
     increase() {
+      debugger
       // изменяем текущее состояние
       this.store$.dispatch(new CountIncreaseAction());
     }

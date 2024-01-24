@@ -8,26 +8,29 @@ const initialState: IState = initialStateCommon;
 
 export const countReducer = (state = initialState, action: CountActions) => {
   switch (action.type) {
-    case countActionsType.increase:
-      return {
-        ...state,
-        countState: {...state.countState, count: state.countState.count + 1}
-      };
-    case countActionsType.decrease:
-      return {
-        ...state,
-        countState: {...state.countState, count: state.countState.count - 1}
-      };
-    case countActionsType.clear:
-      return {
-        ...state,
-        countState: {...state.countState, count: 0}
-      };
-    case countActionsType.updatedAt:
-      return {
-        ...state,
-        countState: {...state.countState, updatedAt: action.payload.updatedAt}
-      };
+    case countActionsType.increase: {
+      debugger
+      let newState = structuredClone(state);
+      newState.countState.count++;
+      return newState;
+    }
+    case countActionsType.decrease: {
+      debugger
+      let newState = structuredClone(state);
+      newState.countState.count--;
+      return newState;
+    }
+    case countActionsType.clear: {
+      debugger
+      let newState = structuredClone(state);
+      newState.countState.count = 0;
+      return newState;
+    }
+    case countActionsType.updatedAt: {
+      let newState = structuredClone(state);
+      newState.cartState.updatedAt = action.payload.updatedAt;
+      return newState;
+    }
     default:
       return state;
   }

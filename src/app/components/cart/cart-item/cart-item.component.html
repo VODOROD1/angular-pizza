@@ -10,8 +10,8 @@
     </div>
     <div class="cart__item-count">
       <button
-        disabled='count === 1'
-        onClick='onClickMinus()'
+        [disabled]='props.count == 1'
+        (click)='onClickMinus()'
         class="button button--outline button--circle cart__item-count-minus">
         <svg
           width="10"
@@ -29,7 +29,7 @@
       </button>
       <b>{{props.count}}</b>
       <button
-        onClick='onClickPlus()'
+        (click)='onClickPlus()'
         class="button button--outline button--circle cart__item-count-plus">
         <svg
           width="10"
@@ -50,7 +50,7 @@
       <b>{{props.price * props.count}} ₽</b>
     </div>
     <div class="cart__item-remove">
-      <div onClick='onClickRemove()' class="button button--outline button--circle">
+      <div (click)='onClickRemove()' class="button button--outline button--circle">
         <svg
           width="10"
           height="10"
